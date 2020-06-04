@@ -1,2 +1,2 @@
 # ShortDeckFlopzilla
-The (long term) goal is to build a short deck poker Flopzilla here
+The goal is to build a short deck poker Flopzilla here

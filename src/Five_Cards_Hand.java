@@ -10,7 +10,7 @@ public class Five_Cards_Hand {
 		suit1=s1; suit2=s2; suit3=s3; suit4=s4; suit5=s5;
 	}//Constructor
 	
-	public static int[] addX(int n, int arr[], int x) {
+	public int[] addX(int n, int arr[], int x) {
 		int i;
 		int newarr[] = new int[n+1];
 		for (i=0; i<n; i++) {

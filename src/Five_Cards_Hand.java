@@ -113,4 +113,16 @@ public class Five_Cards_Hand {
 		int[] targetpattern = {1,1,1,1,1};
 		return (Arrays.equals(cardpattern,targetpattern));
 	}//A bunch of boolean functions on poker hand type
+	
+	public String handtype() {
+		if (isstraightflush()) {return "Straight Flush";}
+		else if (isquad()) {return "Quad";}
+		else if (isjustflush()) {return "Flush";}
+		else if (isfullhouse()) {return "Full House";}
+		else if (isjuststraight()) {return "Straight";}
+		else if (istrips()) {return "Trips";}
+		else if (istwopair()) {return "Two Pair";}
+		else if (isonepair()) {return "Pair";}
+		else {return "High Cards";}
+	}
 }

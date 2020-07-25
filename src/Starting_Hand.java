@@ -20,6 +20,11 @@ public class Starting_Hand {
 		return newarr;
 	}//Append an element at the end of array
 	
+	public double inttodouble(int i) {
+		double d=i;
+		return d;
+	}
+	
 	public String[] shortdeck=
 	{"6c","7c","8c","9c","Tc","Jc","Qc","Kc","Ac",
 	 "6d","7d","8d","9d","Td","Jd","Qd","Kd","Ad",
@@ -52,6 +57,7 @@ public class Starting_Hand {
 		handtypecount.put("Pair",0);
 		handtypecount.put("High Cards",0);
 		
+		
 		int j1; int j2; int j3;
 		for (j1=0; j1<theremainingdeck.length; j1++) {
 			for (j2=j1+1; j2<theremainingdeck.length; j2++) {
@@ -72,10 +78,20 @@ public class Starting_Hand {
 			}
 		}
 		
-		for (String thistype : handtypecount.keySet()) {
-			System.out.println(thistype);
-			System.out.println(handtypecount.get(thistype));
-		}
+		//for (String thistype : handtypecount.keySet()) {
+		//	System.out.println(thistype+" "+handtypecount.get(thistype));
+			//System.out.println(handtypecount.get(thistype));
+		//}
+		System.out.println("Straight Flush "+inttodouble(handtypecount.get("Straight Flush"))/59.84+" %");
+		System.out.println("Quad "+inttodouble(handtypecount.get("Quad"))/59.84+" %");
+		System.out.println("Flush "+inttodouble(handtypecount.get("Flush"))/59.84+" %");
+		System.out.println("Full House "+inttodouble(handtypecount.get("Full House"))/59.84+" %");
+		System.out.println("Straight "+inttodouble(handtypecount.get("Straight"))/59.84+" %");
+		System.out.println("Trips "+inttodouble(handtypecount.get("Trips"))/59.84+" %");
+		System.out.println("Two Pair "+inttodouble(handtypecount.get("Two Pair"))/59.84+" %");
+		System.out.println("Pair "+inttodouble(handtypecount.get("Pair"))/59.84+" %");
+		System.out.println("High Cards "+inttodouble(handtypecount.get("High Cards"))/59.84+" %");
+		//5984 is 34 choose 3, after removing starting hands the number of possible flops
 	}
 
 

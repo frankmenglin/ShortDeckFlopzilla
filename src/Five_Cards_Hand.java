@@ -54,7 +54,7 @@ public class Five_Cards_Hand {
 		int[] flushpattern = {5};
 		return Arrays.equals(suitpattern,flushpattern);
 	}//Check if the given 5 cards hand is a flush (include straight flush)
-
+		
 	public boolean isstraight() {
 		char[] cards = {card1, card2, card3, card4, card5};
 		int[] cardsrank = {};
@@ -125,4 +125,15 @@ public class Five_Cards_Hand {
 		else if (isonepair()) {return "Pair";}
 		else {return "High Cards";}
 	}
+	
+	//Drawing hand type start below
+	
+	public boolean isflushdraw() {
+		char[] suits = {suit1, suit2, suit3, suit4, suit5};
+		int[] suitpattern = pattern(suits);
+		int[] flushpattern = {1,4};
+		return Arrays.equals(suitpattern,flushpattern);
+	}//Check if the given 5 cards hand contains a 4 card flush (i.e. flush draw)
+	
+	
 }

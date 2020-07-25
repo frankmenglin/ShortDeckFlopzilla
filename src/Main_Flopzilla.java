@@ -8,6 +8,10 @@ public class Main_Flopzilla {
 		//	System.out.println(therestofthedeck[j]);
 		//}
 		Starting_Hand mystartinghand = new Starting_Hand('A','h','K','d');
+		
+		Six_Card_Hand myhand = new Six_Card_Hand('9','h','8','d','Q','h','A','h','7','h','6','s');
+		
+		System.out.println(myhand.isstraight());
 
 		mystartinghand.enumerateflop();
 	}

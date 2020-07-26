@@ -46,6 +46,7 @@ public class Starting_Hand {
 	
 	public void enumerateflop() {
 		String[] theremainingdeck=remainingdeck();
+		
 		HashMap<String, Integer> handtypecount = new HashMap<String, Integer>();
 		handtypecount.put("Straight Flush",0);
 		handtypecount.put("Quad",0);
@@ -57,11 +58,17 @@ public class Starting_Hand {
 		handtypecount.put("Pair",0);
 		handtypecount.put("High Cards",0);
 		
+		HashMap<String, Integer> drawtypecount = new HashMap<String, Integer>();
+		drawtypecount.put("Flush Draw",0);
+		drawtypecount.put("8 Cards Straight Draw",0);
+		drawtypecount.put("Gut Shot Straight Draw",0);
+		
 		
 		int j1; int j2; int j3;
 		for (j1=0; j1<theremainingdeck.length; j1++) {
 			for (j2=j1+1; j2<theremainingdeck.length; j2++) {
 				for (j3=j2+1; j3<theremainingdeck.length; j3++) {
+					
 					String flopcard1 = theremainingdeck[j1];
 					String flopcard2 = theremainingdeck[j2];
 					String flopcard3 = theremainingdeck[j3];
@@ -74,6 +81,11 @@ public class Starting_Hand {
 					Five_Cards_Hand thishand = new Five_Cards_Hand(card1,suit1,card2,suit2,f1card,f1suit,f2card,f2suit,f3card,f3suit);
 					String thishandtype = thishand.handtype();
 					handtypecount.put(thishandtype, handtypecount.get(thishandtype)+1);
+					
+					if (thishand.isflushdraw()==true) {drawtypecount.put("Flush Draw", drawtypecount.get("Flush Draw")+1);}
+					if (thishand.is8carddraw()==true) {drawtypecount.put("8 Cards Straight Draw", drawtypecount.get("8 Cards Straight Draw")+1);}
+					if (thishand.isgutshotdraw()==true) {drawtypecount.put("Gut Shot Straight Draw", drawtypecount.get("Gut Shot Straight Draw")+1);}
+
 				}
 			}
 		}
@@ -82,6 +94,7 @@ public class Starting_Hand {
 		//	System.out.println(thistype+" "+handtypecount.get(thistype));
 			//System.out.println(handtypecount.get(thistype));
 		//}
+		System.out.println("Hand Type");
 		System.out.println("Straight Flush "+inttodouble(handtypecount.get("Straight Flush"))/59.84+" %");
 		System.out.println("Quad "+inttodouble(handtypecount.get("Quad"))/59.84+" %");
 		System.out.println("Flush "+inttodouble(handtypecount.get("Flush"))/59.84+" %");
@@ -91,6 +104,11 @@ public class Starting_Hand {
 		System.out.println("Two Pair "+inttodouble(handtypecount.get("Two Pair"))/59.84+" %");
 		System.out.println("Pair "+inttodouble(handtypecount.get("Pair"))/59.84+" %");
 		System.out.println("High Cards "+inttodouble(handtypecount.get("High Cards"))/59.84+" %");
+		
+		System.out.println("Draw Type");
+		System.out.println("Flush Draw "+inttodouble(drawtypecount.get("Flush Draw"))/59.84+" %");
+		System.out.println("8 Cards Straight Draw "+inttodouble(drawtypecount.get("8 Cards Straight Draw"))/59.84+" %");
+		System.out.println("Gut Shot Straight Draw "+inttodouble(drawtypecount.get("Gut Shot Straight Draw"))/59.84+" %");
 		//5984 is 34 choose 3, after removing starting hands the number of possible flops
 	}
 

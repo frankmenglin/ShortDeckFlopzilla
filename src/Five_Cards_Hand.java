@@ -18,7 +18,28 @@ public class Five_Cards_Hand {
 		}
 		newarr[n] = x;
 		return newarr;
-	}//Append an element at the end of array
+	}//Append an integer element at the end of array
+	
+	public boolean isin(int n, char arr[], char x) {
+		int i;
+		for (i=0; i<n; i++) {
+			if (arr[i]==x) {return true;}
+		}
+		return false;
+	}
+	
+	public char[] remove(int n, char arr[], char x) {
+		if (isin(arr.length, arr,x)==false) {return arr;}
+		boolean z = false;
+		int i;
+		int j=0;
+		char newarr[] = new char[n-1];
+		for (i=0; i<n; i++) {
+			if (arr[i]==x & z==false) {z=true; continue;}
+			else {newarr[j]=arr[i]; j+=1;}
+		}
+		return newarr;
+	}//Remove a specific char element in the array
 	
 	public int cardconverter(char x) {
 		if (x=='6') {return 6;}else if (x=='7') {return 7;}else if (x=='8') {return 8;}else if (x=='9') {
@@ -135,5 +156,46 @@ public class Five_Cards_Hand {
 		return Arrays.equals(suitpattern,flushpattern);
 	}//Check if the given 5 cards hand contains a 4 card flush (i.e. flush draw)
 	
+	
+	
+//	public int[] remainingrank() {
+//		char[] cards = {card1, card2, card3, card4, card5};
+//		int[] remainingrank = new int[]{6,7,8,9,10,11,12,13,14};
+//		int i;
+//		for (i=0; i<cards.length; i++) {remainingrank = remove(remainingrank.length, remainingrank, cardconverter(cards[i]));}
+//		return remainingrank;
+//	}
+	
+	public boolean isgutshotdraw() {
+		char[] cards = {card1, card2, card3, card4, card5};
+		char[] remainingrank = new char[]{'6','7','8','9','T','J','Q','K','A'};
+		int i;
+		for (i=0; i<cards.length; i++) {remainingrank = remove(remainingrank.length, remainingrank, cards[i]);}
+		//The rank does not appear in hand and board so far
+		int count = 0;
+		Six_Card_Hand newpossiblehand;
+		for (i=0; i<remainingrank.length; i++) {
+			newpossiblehand = new Six_Card_Hand(card1, suit1, card2, suit2, card3, suit3, card4, suit4, card5, suit5, remainingrank[i], 's');
+			if (newpossiblehand.isstraight()==true) {count+=1;}
+		}
+		if(count==1 && isstraight()==false) {return true;}
+		else {return false;}
+	}
+
+	public boolean is8carddraw() {
+		char[] cards = {card1, card2, card3, card4, card5};
+		char[] remainingrank = new char[]{'6','7','8','9','T','J','Q','K','A'};
+		int i;
+		for (i=0; i<cards.length; i++) {remainingrank = remove(remainingrank.length, remainingrank, cards[i]);}
+		//The rank does not appear in hand and board so far
+		int count = 0;
+		Six_Card_Hand newpossiblehand;
+		for (i=0; i<remainingrank.length; i++) {
+			newpossiblehand = new Six_Card_Hand(card1, suit1, card2, suit2, card3, suit3, card4, suit4, card5, suit5, remainingrank[i], 's');
+			if (newpossiblehand.isstraight()==true) {count+=1;}
+		}
+		if(count==2 && isstraight()==false) {return true;}
+		else {return false;}
+	}
 	
 }

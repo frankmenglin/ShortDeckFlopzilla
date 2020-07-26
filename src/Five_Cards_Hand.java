@@ -155,16 +155,7 @@ public class Five_Cards_Hand {
 		int[] flushpattern = {1,4};
 		return Arrays.equals(suitpattern,flushpattern);
 	}//Check if the given 5 cards hand contains a 4 card flush (i.e. flush draw)
-	
-	
-	
-//	public int[] remainingrank() {
-//		char[] cards = {card1, card2, card3, card4, card5};
-//		int[] remainingrank = new int[]{6,7,8,9,10,11,12,13,14};
-//		int i;
-//		for (i=0; i<cards.length; i++) {remainingrank = remove(remainingrank.length, remainingrank, cardconverter(cards[i]));}
-//		return remainingrank;
-//	}
+
 	
 	public boolean isgutshotdraw() {
 		char[] cards = {card1, card2, card3, card4, card5};
@@ -197,5 +188,14 @@ public class Five_Cards_Hand {
 		if(count==2 && isstraight()==false) {return true;}
 		else {return false;}
 	}
+	
+	//Combo Type below
+	
+	public boolean isstraight_flushdraw() {return handtype()=="Straight" && isflushdraw();}
+	public boolean ispair_gutshot() {return handtype()=="Pair" && isgutshotdraw();}
+	public boolean ispair_8card() {return handtype()=="Pair" && is8carddraw();}
+	public boolean ispair_flushdraw() {return handtype()=="Pair" && isflushdraw();}
+	public boolean isgutshot_flushdraw() {return isgutshotdraw() && isflushdraw();}
+	public boolean is8card_flushdraw() {return is8carddraw() && isflushdraw();}
 	
 }

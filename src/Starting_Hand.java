@@ -61,8 +61,15 @@ public class Starting_Hand {
 		HashMap<String, Integer> drawtypecount = new HashMap<String, Integer>();
 		drawtypecount.put("Flush Draw",0);
 		drawtypecount.put("8 Cards Straight Draw",0);
-		drawtypecount.put("Gut Shot Straight Draw",0);
+		drawtypecount.put("Gutshot Straight Draw",0);
 		
+		HashMap<String, Integer> combotypecount = new HashMap<String, Integer>();
+		combotypecount.put("Straight & Flush Draw",0);
+		combotypecount.put("Pair & Flush Draw",0);
+		combotypecount.put("Pair & 8 Cards Straight Draw",0);
+		combotypecount.put("Pair & Gutshot Straight Draw",0);
+		combotypecount.put("Flush Draw & 8 Cards Straight Draw",0);
+		combotypecount.put("Flush Draw & Gutshot Straight Draw",0);
 		
 		int j1; int j2; int j3;
 		for (j1=0; j1<theremainingdeck.length; j1++) {
@@ -84,7 +91,15 @@ public class Starting_Hand {
 					
 					if (thishand.isflushdraw()==true) {drawtypecount.put("Flush Draw", drawtypecount.get("Flush Draw")+1);}
 					if (thishand.is8carddraw()==true) {drawtypecount.put("8 Cards Straight Draw", drawtypecount.get("8 Cards Straight Draw")+1);}
-					if (thishand.isgutshotdraw()==true) {drawtypecount.put("Gut Shot Straight Draw", drawtypecount.get("Gut Shot Straight Draw")+1);}
+					if (thishand.isgutshotdraw()==true) {drawtypecount.put("Gutshot Straight Draw", drawtypecount.get("Gutshot Straight Draw")+1);}
+					
+					if (thishand.isstraight_flushdraw()==true){combotypecount.put("Straight & Flush Draw", combotypecount.get("Straight & Flush Draw")+1);}
+					if (thishand.ispair_flushdraw()==true){combotypecount.put("Pair & Flush Draw", combotypecount.get("Pair & Flush Draw")+1);}
+					if (thishand.ispair_8card()==true){combotypecount.put("Pair & 8 Cards Straight Draw", combotypecount.get("Pair & 8 Cards Straight Draw")+1);}
+					if (thishand.ispair_gutshot()==true){combotypecount.put("Pair & Gutshot Straight Draw", combotypecount.get("Pair & Gutshot Straight Draw")+1);}
+					if (thishand.is8card_flushdraw()==true){combotypecount.put("Flush Draw & 8 Cards Straight Draw", combotypecount.get("Flush Draw & 8 Cards Straight Draw")+1);}
+					if (thishand.isgutshot_flushdraw()==true){combotypecount.put("Flush Draw & Gutshot Straight Draw", combotypecount.get("Flush Draw & Gutshot Straight Draw")+1);}
+
 
 				}
 			}
@@ -95,7 +110,7 @@ public class Starting_Hand {
 			//System.out.println(handtypecount.get(thistype));
 		//}
 		System.out.println("Hand Type");
-		System.out.println("Straight Flush "+inttodouble(handtypecount.get("Straight Flush"))/59.84+" %");
+		System.out.println("Straight Flush "+inttodouble(handtypecount.get("Straight Flush"))/59.84+"%");
 		System.out.println("Quad "+inttodouble(handtypecount.get("Quad"))/59.84+" %");
 		System.out.println("Flush "+inttodouble(handtypecount.get("Flush"))/59.84+" %");
 		System.out.println("Full House "+inttodouble(handtypecount.get("Full House"))/59.84+" %");
@@ -108,8 +123,16 @@ public class Starting_Hand {
 		System.out.println("Draw Type");
 		System.out.println("Flush Draw "+inttodouble(drawtypecount.get("Flush Draw"))/59.84+" %");
 		System.out.println("8 Cards Straight Draw "+inttodouble(drawtypecount.get("8 Cards Straight Draw"))/59.84+" %");
-		System.out.println("Gut Shot Straight Draw "+inttodouble(drawtypecount.get("Gut Shot Straight Draw"))/59.84+" %");
+		System.out.println("Gutshot Straight Draw "+inttodouble(drawtypecount.get("Gutshot Straight Draw"))/59.84+" %");
 		//5984 is 34 choose 3, after removing starting hands the number of possible flops
+		
+		System.out.println("Combo Type");
+		System.out.println("Straight & Flush Draw "+inttodouble(combotypecount.get("Straight & Flush Draw"))/59.84+" %");
+		System.out.println("Pair & Flush Draw "+inttodouble(combotypecount.get("Pair & Flush Draw"))/59.84+" %");
+		System.out.println("Pair & 8 Cards Straight Draw "+inttodouble(combotypecount.get("Pair & 8 Cards Straight Draw"))/59.84+" %");
+		System.out.println("Pair & Gutshot Straight Draw "+inttodouble(combotypecount.get("Pair & Gutshot Straight Draw"))/59.84+" %");
+		System.out.println("Flush Draw & 8 Cards Straight Draw "+inttodouble(combotypecount.get("Flush Draw & 8 Cards Straight Draw"))/59.84+" %");
+		System.out.println("Flush Draw & Gutshot Straight Draw "+inttodouble(combotypecount.get("Flush Draw & Gutshot Straight Draw"))/59.84+" %");
 	}
 
 
